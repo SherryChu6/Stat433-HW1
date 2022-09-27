@@ -23,7 +23,7 @@ library(ggplot2)
 library(nycflights13)
 ```
 
-#### Q1: How many flights have a missing dep_time? What other variables are missing? What might these rows represent?
+#### Q1: How many flights have a missing `dep_time`? What other variables are missing? What might these rows represent?
 
 ``` r
 sum(is.na(flights$dep_time))
@@ -31,7 +31,7 @@ sum(is.na(flights$dep_time))
 
     ## [1] 8255
 
-**Answer:** There are 8255 flights have a missing dep_time.
+**Answer:** There are 8255 flights have a missing `dep_time`.
 
 ``` r
 filter(flights, is.na(dep_time))
@@ -54,10 +54,10 @@ filter(flights, is.na(dep_time))
     ## #   carrier <chr>, flight <int>, tailnum <chr>, origin <chr>, dest <chr>,
     ## #   air_time <dbl>, distance <dbl>, hour <dbl>, minute <dbl>, time_hour <dttm>
 
-**Answer:** dep_delay, arr_time, arr_delay, air_time are also missing.
-Flights with these variables missing might be cancelled.
+**Answer:** `dep_delay`, `arr_time`, `arr_delay`, `air_time` are also
+missing. Flights with these variables missing might be cancelled.
 
-#### Q2: Currently dep_time and sched_dep_time are convenient to look at, but hard to compute with because they’re not really continuous numbers. Convert them to a more convenient representation of number of minutes since midnight.
+#### Q2: Currently `dep_time` and `sched_dep_time` are convenient to look at, but hard to compute with because they’re not really continuous numbers. Convert them to a more convenient representation of number of minutes since midnight.
 
 ``` r
 flights_new = flights %>%
@@ -82,7 +82,7 @@ select(flights_new, starts_with('dep_time'), starts_with('sched_dep'))
     ## 10      558          358            600                360
     ## # … with 336,766 more rows
 
-#### Q3: Look at the number of canceled flights per day. Is there a pattern? Is the proportion of canceled flights related to the average delay? Use multiple dyplr operations, all on one line, concluding with ggplot(aes(x= ,y=)) + geom_point().
+#### Q3: Look at the number of canceled flights per day. Is there a pattern? Is the proportion of canceled flights related to the average delay? Use multiple dyplr operations, all on one line, concluding with `ggplot(aes(x= ,y=)) + geom_point()`.
 
 ``` r
 flights %>% 
