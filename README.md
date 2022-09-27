@@ -89,7 +89,8 @@ flights %>%
   group_by(month, day) %>%
   summarize(avg_dep_delay = mean(dep_delay, na.rm = T),
             prop_cancelled = sum(is.na(dep_time)/n())) %>%
-  ggplot(mapping = aes(x = avg_dep_delay, y = prop_cancelled)) +
+  ggplot(aes(x = avg_dep_delay, y = prop_cancelled)) +
+  labs(x = "Average Delay", y = "Prop of Cancelled Flights") +
   geom_point() +
   geom_smooth(method = 'lm', se = F)
 ```
@@ -99,3 +100,7 @@ flights %>%
     ## `geom_smooth()` using formula 'y ~ x'
 
 ![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+
+**Answer:** From the plot, we can see that there exists a pattern. It’s
+seemed to have a positive linear trend between the proportion of
+cancelled flights and the average delay.
